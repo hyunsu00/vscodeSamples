@@ -1,0 +1,38 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Python Script in Background",
+            "type": "shell",
+            "command": "python3",
+            "args": [
+                "-u",
+                "-m",
+                "http.server",
+                "24448"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent",
+                "focus": false,
+                "panel": "dedicated"
+            },
+            "isBackground": true, // 비동기로 실행
+            "problemMatcher": { // 실행중에 발생하는 문제 탐지
+                "pattern": {
+                    "regexp": ".*" // 문자열에서 어떤 부분이든 이 패턴과 일치
+                },
+                "background": {
+                    "activeOnStart": true, // 백그라운드 태스크가 실행될 때 자동으로 활성화 여부
+                    "beginsPattern": ".*", // 시작 패턴
+                    "endsPattern": ".*", // 종료 패턴
+                }
+            }
+        }
+    ]
+}
